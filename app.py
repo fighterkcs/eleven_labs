@@ -3,7 +3,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-AGENT_ID = os.getenv("AGENT_ID")
+# Try getting from Streamlit secrets (for Cloud) or environment variables (for Local)
+AGENT_ID = st.secrets.get("AGENT_ID") if "AGENT_ID" in st.secrets else os.getenv("AGENT_ID")
 
 st.set_page_config(page_title="Krishna")
 st.title(" Speak to Krishna")
